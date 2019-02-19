@@ -1,0 +1,15 @@
+﻿Do komunikacji między procesami wykorzystałam kolejki komunikatów oraz pamięć współdzieloną. 
+
+Komunikacja pomiędzy klientami a serverem odbywa się za pomocą jednej kolejki komunikatów. Klient, chcąc zalogować się do systemu, wysyła wiadomość o typie 1 gdzie przesyła swój identyfikator. Czeka na odpowiedź serwera, która jest typu drugiego.
+
+Każdy klient nasłuchuje wiadomości o typie takim, jak wysłany wcześniej przez niego identyfikator do serwera. Struktura wiadomości:
+
+struct msgbuf {
+    long type; // typ, który jest identyfikatorem klienta
+    long hiddenType; // typ nadesłanej wiadomości (może być dowolny)
+    char text[1024]; // treść wiadomości
+};
+
+Serwer naprzemiennie odczytuje wiadomości czekających na zalogowanie klientów, wiadomości wysyłane przez klientów i wysyła wiadomości.
+
+Klient dzieli się na dwa procesy - jeden z nich odpowiada za wyświetlanie menu, za pomocą którego użytkownik może wyświetlać wiadomości, wysyłać wiadomości i wyświetlać subskrypcje, a drugi za ciągłe odbieranie wiadomości od serwera. Procesy te komunikują się za pomocą pamięci współdzielonej.
