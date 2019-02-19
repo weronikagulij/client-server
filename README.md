@@ -17,3 +17,5 @@ Klienci logując się do systemu otrzymują swój unikalny numer identyfikacyjny
 inf136720_s.c - plik serwera. Odpowiada za rejestrowanie użytkowników i przechowywanie ich identyfikatorów oraz rozsyłanie wiadomości.
 
 inf136720_k.c - plik klienta. Po zalogowaniu prosi o wybranie subskrybowanych typów wiadomości. Użytkownik może odbierać wiadomości, wysyłać je oraz wyświetlać swoje subskrypcje.
+
+![alt text](https://raw.githubusercontent.com/wjankowska/screenshots/master/c.png)
